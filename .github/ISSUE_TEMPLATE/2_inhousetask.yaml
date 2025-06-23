@@ -1,0 +1,29 @@
+name: InternalTask
+description: 内部タスクを作成する場合はこちら
+title: "[内部タスク]:タスク名"
+labels: ["内部"]
+assignees: [""]
+projects: [""]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - **必ずMilestoneを設定してください**
+        - Labelsに"wbs"を設定するとガントチャート表示対象になります
+  - type: textarea
+    attributes:
+      label: 内容を記載
+      value: "## タスクのゴール
+
+<!-- タスクをクローズする達成条件を記載する -->
+
+
+## 子タスクリスト
+
+- [ ] T (～MM/DD)
+
+- [ ] T (～MM/DD)
+
+- [ ] T (～MM/DD)
+
+"

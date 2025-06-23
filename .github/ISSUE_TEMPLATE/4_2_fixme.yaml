@@ -1,0 +1,23 @@
+name: Fixme
+description: 修正依頼を登録する場合はこちら
+title: "Fixme:修正依頼タイトル"
+labels: ["bug"]
+assignees: [""]
+projects: [""]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - 必ずMilestoneを設定してください
+        - Labelsに"WBS"を設定するとガントチャート表示対象になります
+  - type: textarea
+    attributes:
+      label: 内容を記載
+      value: "## 依頼
+
+<!-- 修正依頼の説明、ソースコードの箇所が特定できる場合はそのパーマネントリンクも記載 -->
+
+<!-- 画面等の修正の場合は、どのように修正すべきかの画面のスクリーンショット -->
+
+
+"

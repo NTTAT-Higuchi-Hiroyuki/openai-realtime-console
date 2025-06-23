@@ -1,0 +1,29 @@
+name: Task
+description: タスクを作成する場合はこちら
+title: "Task:タスク名"
+labels: ["task"]
+assignees: [""]
+projects: [""]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - **必ずMilestoneを設定してください**
+        - Labelsに"wbs"を設定するとガントチャート表示対象になります
+  - type: textarea
+    attributes:
+      label: 内容を記載
+      value: "## タスクのゴール
+
+<!-- ISSUEタスクをクローズする達成条件を記載する -->
+
+
+## 子タスクリスト
+
+- [ ] T (～MM/DD)
+
+- [ ] T (～MM/DD)
+
+- [ ] T (～MM/DD)
+
+"

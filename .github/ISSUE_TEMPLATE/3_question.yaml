@@ -1,0 +1,28 @@
+name: Question
+description: 質問・依頼を作成する場合はこちら
+title: "Q:質問・依頼タイトル"
+labels: ['question']
+assignees: [""]
+projects: [""]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - **必ず回答者をassigneesを設定してください**
+  - type: textarea
+    attributes:
+      label: 内容を記載
+      value: "## 課題のゴール
+
+<!-- 課題の解決条件を記載する。XXXの実装方式を決定する -->
+
+<!-- 単純な質問であれば、XXXの設定値を確認する？等 -->
+
+
+## 内容
+
+<!-- 質問の前提条件、解決したい内容を記載する -->
+
+<!-- あらかじめ解決案の提示が -->
+
+"
