@@ -10,6 +10,7 @@ OpenAI Realtime API と WebRTC を使用したリアルタイム音声対話コ�
 ## 開発コマンド
 
 ### 基本コマンド
+
 ```bash
 npm install          # 依存関係のインストール
 npm run dev          # 開発サーバー起動（ポート3000）
@@ -18,6 +19,7 @@ npm run lint         # ESLint によるコード検証・修正
 ```
 
 ### ビルドコマンド
+
 ```bash
 npm run build        # クライアント・サーバー両方をビルド
 npm run build:client # クライアントのみビルド（dist/client）
@@ -27,24 +29,28 @@ npm run build:server # サーバーのみビルド（dist/server）
 ## アーキテクチャ
 
 ### フロントエンド（/client）
+
 - **React** + **Vite** による SPA 構成
 - **Tailwind CSS** でスタイリング
 - **WebRTC** による OpenAI Realtime API との直接通信
 - SSR 対応（entry-server.jsx / entry-client.jsx）
 
 ### バックエンド（server.js）
+
 - **Express** サーバー
 - **Vite middleware** による開発時の React サーブ
 - `/token` エンドポイントで OpenAI セッショントークン生成
 - SSR レンダリング処理
 
 ### 主要コンポーネント
+
 - **App.jsx**: メインアプリケーション、WebRTC セッション管理
 - **SessionControls.jsx**: セッション開始/停止、メッセージ送信UI
 - **EventLog.jsx**: リアルタイムイベントログ表示
 - **ToolPanel.jsx**: 関数呼び出し設定パネル
 
 ### WebRTC フロー
+
 1. `/token` でエフェメラルキー取得
 2. RTCPeerConnection 作成、マイク音声トラック追加
 3. Data Channel でイベント送受信
@@ -55,6 +61,7 @@ npm run build:server # サーバーのみビルド（dist/server）
 `.env` ファイルに `OPENAI_API_KEY` を設定する必要があります。
 
 ## important-instruction-reminders
+
 Do what has been asked; nothing more, nothing less.
 NEVER create files unless they're absolutely necessary for achieving your goal.
 ALWAYS prefer editing an existing file to creating a new one.
