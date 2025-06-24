@@ -1,68 +1,107 @@
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is an OpenAI Realtime Console application that demonstrates how to use the OpenAI Realtime API with WebRTC. The application enables real-time voice conversations with GPT-4o models and includes client-side function calling capabilities.
+
+## Key Architecture
+
+### Full-Stack Structure
+
+- **Frontend**: React application with Vite bundling (client/ directory)
+- **Backend**: Express.js server with SSR support using Vite middleware
+- **Communication**: WebRTC data channels for real-time API events, HTTP for token generation
+
+### Core Components
+
+- `App.jsx`: Main application component managing WebRTC peer connections and session state
+- `SessionControls.jsx`: UI for starting/stopping sessions and sending text messages  
+- `ToolPanel.jsx`: Demonstrates function calling with color palette generation tool
+- `EventLog.jsx`: Displays real-time API events for debugging
+
+### WebRTC Integration
+
+The application uses WebRTC peer connections to communicate with OpenAI's Realtime API:
+
+- Audio streams for voice input/output
+- Data channels for JSON event messaging
+- Session tokens obtained via `/token` endpoint
+
+## Development Commands
+
+### Setup
+
+```bash
+# Copy environment file and add your OpenAI API key
+cp .env.example .env
+
+# Install dependencies
+npm install
+```
+
+### Development
+
+```bash
+# Start development server with hot reload
+npm run dev
+
+# Start production server
+npm start
+```
+
+### Build
+
+```bash
+# Build both client and server
+npm run build
+
+# Build client only
+npm run build:client
+
+# Build server only  
+npm run build:server
+```
+
+### Code Quality
+
+```bash
+# Run ESLint with auto-fix
+npm run lint
+```
+
+## Environment Configuration
+
+Required environment variables in `.env`:
+
+- `OPENAI_API_KEY`: Your OpenAI API key for Realtime API access
+- `PORT`: Server port (defaults to 3000)
+
+## API Integration
+
+### Token Generation
+
+The `/token` endpoint generates ephemeral session tokens for the OpenAI Realtime API using the configured API key. These tokens are used to establish WebRTC connections.
+
+### Realtime API Model
+
+Currently configured to use `gpt-4o-realtime-preview-2024-12-17` with `verse` voice.
+
+## Function Calling Example
+
+The ToolPanel component demonstrates client-side function calling:
+
+- Registers a `display_color_palette` function during session initialization
+- Handles function call responses and displays results
+- Shows how to send follow-up prompts after function execution
+
+## Technology Stack
+
+- **Frontend**: React 18, Vite, TailwindCSS, React Router
+- **Backend**: Express.js, Node.js ES modules
+- **Styling**: TailwindCSS with PostCSS and nesting support
+- **Icons**: React Feather
+- **Build**: Vite with React plugin and SSR support
+
 このプロジェクトの従事者は日本語を主要なコミュニケーション言語として使用します。全てのドキュメント、コードコメント、コミットメッセージ、Github Issue、Pull Requestは日本語で記述されます。
-
-## プロジェクト概要
-
-OpenAI Realtime API と WebRTC を使用したリアルタイム音声対話コンソールアプリケーション。React フロントエンドと Express サーバーを使用した SSR 構成。
-
-## 開発コマンド
-
-### 基本コマンド
-
-```bash
-npm install          # 依存関係のインストール
-npm run dev          # 開発サーバー起動（ポート3000）
-npm start            # 本番サーバー起動
-npm run lint         # ESLint によるコード検証・修正
-```
-
-### ビルドコマンド
-
-```bash
-npm run build        # クライアント・サーバー両方をビルド
-npm run build:client # クライアントのみビルド（dist/client）
-npm run build:server # サーバーのみビルド（dist/server）
-```
-
-## アーキテクチャ
-
-### フロントエンド（/client）
-
-- **React** + **Vite** による SPA 構成
-- **Tailwind CSS** でスタイリング
-- **WebRTC** による OpenAI Realtime API との直接通信
-- SSR 対応（entry-server.jsx / entry-client.jsx）
-
-### バックエンド（server.js）
-
-- **Express** サーバー
-- **Vite middleware** による開発時の React サーブ
-- `/token` エンドポイントで OpenAI セッショントークン生成
-- SSR レンダリング処理
-
-### 主要コンポーネント
-
-- **App.jsx**: メインアプリケーション、WebRTC セッション管理
-- **SessionControls.jsx**: セッション開始/停止、メッセージ送信UI
-- **EventLog.jsx**: リアルタイムイベントログ表示
-- **ToolPanel.jsx**: 関数呼び出し設定パネル
-
-### WebRTC フロー
-
-1. `/token` でエフェメラルキー取得
-2. RTCPeerConnection 作成、マイク音声トラック追加
-3. Data Channel でイベント送受信
-4. OpenAI Realtime API と SDP 交換でセッション確立
-
-## 環境設定
-
-`.env` ファイルに `OPENAI_API_KEY` を設定する必要があります。
-
-## important-instruction-reminders
-
-Do what has been asked; nothing more, nothing less.
-NEVER create files unless they're absolutely necessary for achieving your goal.
-ALWAYS prefer editing an existing file to creating a new one.
-NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
